@@ -1,0 +1,79 @@
+/* Paleta rosa */
+:root {
+  --rosa-claro: #ffe6f0;
+  --rosa-medio: #ffb6c1;
+  --rosa-escuro: #ff69b4;
+  --texto: #4a0033;
+}
+
+body {
+  background-color: var(--rosa-claro);
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--texto);
+}
+
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #ffb6c1;
+}
+
+h1, h2 {
+  text-align: center;
+  color: var(--rosa-escuro);
+}
+
+.produtos, .form-adicionar {
+  margin-bottom: 20px;
+}
+
+.produto {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--rosa-medio);
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+button {
+  background-color: var(--rosa-escuro);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #d44a97;
+}
+
+#carrinho {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#carrinho li {
+  background-color: var(--rosa-medio);
+  color: white;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 8px;
+}
+
+.form-adicionar input {
+  padding: 8px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: calc(50% - 10px);
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Supermercado Rosa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🛒 Supermercado Rosa</h1>
+
+    <!-- Seção de adição manual -->
+    <div class="form-adicionar">
+      <input type="text" id="nomeProduto" placeholder="Nome do produto" />
+      <input type="number" id="precoProduto" placeholder="Preço" />
+      <button id="adicionarManual">Adicionar Produto</button>
+    </div>
+
+    <!-- Produtos fixos -->
+    <div class="produtos">
+      <div class="produto">
+        <span>🍞 Pão - R$3.00</span>
+        <button data-produto="Pão" data-preco="3.00">Adicionar</button>
+      </div>
+      <div class="produto">
+        <span>🥛 Leite - R$4.50</span>
+        <button data-produto="Leite" data-preco="4.50">Adicionar</button>
+      </div>
+      <div class="produto">
+        <span>🍎 Maçã - R$2.00</span>
+        <button data-produto="Maçã" data-preco="2.00">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- Carrinho -->
+    <h2>🛍 Carrinho</h2>
+    <ul id="carrinho"></ul>
+    <p><strong>Total: R$<span id="total">0.00</span></strong></p>
+
+    <button id="limpar">🗑 Limpar Carrinho</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
