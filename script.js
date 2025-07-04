@@ -7,19 +7,23 @@ const produtosPadrao = [
 
 // Carrega a lista de produtos do localStorage ou usa padrão
 function obterProdutos() {
+  // LocalStorage 1: Recupera a lista de produtos armazenada no localStorage, ou usa os produtos padrão se não houver nada salvo.
   return JSON.parse(localStorage.getItem("produtos")) || produtosPadrao;
 }
 
 function salvarProdutos(lista) {
+  // LocalStorage 2: Salva a lista de produtos no localStorage, convertendo o array para string JSON.
   localStorage.setItem("produtos", JSON.stringify(lista));
 }
 
 // Retorna o carrinho salvo
 function obterCarrinho() {
+  // LocalStorage 3: Recupera a lista de itens do carrinho armazenada no localStorage, ou retorna array vazio se não houver nada salvo.
   return JSON.parse(localStorage.getItem("carrinho")) || [];
 }
 
 function salvarCarrinho(lista) {
+  // LocalStorage 4: Salva a lista do carrinho no localStorage, convertendo o array para string JSON.
   localStorage.setItem("carrinho", JSON.stringify(lista));
 }
 
@@ -39,7 +43,7 @@ function atualizarProdutos() {
     container.appendChild(div);
   });
 
-  // Adiciona eventos aos novos botões
+  // eventListener 1: É disparado quando um botão "Adicionar" é clicado, e chama a função que adiciona o item ao carrinho
   document.querySelectorAll("button[data-produto]").forEach(botao => {
     botao.addEventListener("click", () => {
       const nome = botao.getAttribute("data-produto");
@@ -76,7 +80,7 @@ function adicionarAoCarrinho(nome, preco) {
   atualizarCarrinho();
 }
 
-// Adiciona um novo produto à lista fixa
+// eventListener 2: É disparado quando o usuário clica no botão de adicionar produto manualmente
 document.getElementById("adicionarManual").addEventListener("click", () => {
   const nome = document.getElementById("nomeProduto").value.trim();
   const preco = parseFloat(document.getElementById("precoProduto").value);
@@ -84,7 +88,7 @@ document.getElementById("adicionarManual").addEventListener("click", () => {
   if (nome && !isNaN(preco) && preco > 0) {
     const produtos = obterProdutos();
     produtos.push({ nome, preco });
-    salvarProdutos(produtos);
+    salvarProdutos(produtos); // LocalStorage 2 (reutilizado): salva os produtos atualizados
     atualizarProdutos();
 
     document.getElementById("nomeProduto").value = "";
@@ -94,14 +98,16 @@ document.getElementById("adicionarManual").addEventListener("click", () => {
   }
 });
 
-// Limpar carrinho
+// eventListener 3: É disparado quando o usuário clica no botão de limpar carrinho
 document.getElementById("limpar").addEventListener("click", () => {
+  // LocalStorage 5: Remove a chave "carrinho" do localStorage, limpando o carrinho.
   localStorage.removeItem("carrinho");
   atualizarCarrinho();
 });
 
-// Carrega produtos e carrinho ao iniciar
+// eventListener 4: É disparado quando o documento é totalmente carregado no navegador
 window.addEventListener("load", () => {
   atualizarProdutos();
   atualizarCarrinho();
 });
+
