@@ -140,19 +140,40 @@ document.getElementById("limpar").addEventListener("click", () => {
   atualizarCarrinho();
 });
 
-// eventListener 4: É disparado quando o documento é totalmente carregado no navegador
+// eventListener 4: Ao carregar a página
 window.addEventListener("load", () => {
   atualizarProdutos();
   atualizarCarrinho();
   atualizarContador(); // Atualiza contador por produto na tela
+
+  // Verifica o tema salvo no localStorage
+  const temaSalvo = localStorage.getItem("tema");
+  if (temaSalvo === "escuro") {
+    document.body.classList.add("escuro");
+    document.getElementById("alternarTema").textContent = "☀️ Modo Claro";
+  }
 });
 
-// eventListener 5: É disparado quando o usuário clica no botão de limpar contador de cliques
+// eventListener 5: Botão para limpar o contador de cliques
 document.getElementById("limparContador").addEventListener("click", () => {
   // LocalStorage 8: Remove o contador do localStorage e reseta o objeto
   localStorage.removeItem("contadorProdutos");
   contadorProdutos = {};
   atualizarContador();
+});
+
+// eventListener 6: Alterna o modo claro e escuro ao clicar no botão
+document.getElementById("alternarTema").addEventListener("click", () => {
+  document.body.classList.toggle("escuro");
+
+  // Salva no localStorage o tema atual
+  if (document.body.classList.contains("escuro")) {
+    localStorage.setItem("tema", "escuro");
+    document.getElementById("alternarTema").textContent = "☀️ Modo Claro";
+  } else {
+    localStorage.setItem("tema", "claro");
+    document.getElementById("alternarTema").textContent = "🌙 Modo Escuro";
+  }
 });
 
 

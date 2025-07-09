@@ -1,9 +1,17 @@
-/* Paleta rosa */
+/* Paleta rosa padrão (modo claro) */
 :root {
   --rosa-claro: #ffe6f0;
   --rosa-medio: #ffb6c1;
   --rosa-escuro: #ff69b4;
   --texto: #4a0033;
+}
+
+/* Modo escuro: redefine as mesmas variáveis */
+body.escuro {
+  --rosa-claro: #1a0014;
+  --rosa-medio: #800040;
+  --rosa-escuro: #ff4fa3;
+  --texto: #fcd6e5;
 }
 
 body {
@@ -18,9 +26,9 @@ body {
   max-width: 600px;
   margin: 30px auto;
   padding: 20px;
-  background: white;
+  background: var(--rosa-claro);
   border-radius: 15px;
-  box-shadow: 0 0 10px #ffb6c1;
+  box-shadow: 0 0 10px var(--rosa-medio);
 }
 
 h1, h2 {
@@ -78,16 +86,7 @@ button:hover {
   width: calc(50% - 10px);
 }
 
-/* Novo botão contador de cliques */
-#contadorCliques {
-  background-color: var(--rosa-medio);
-  margin-top: 10px;
-  margin-bottom: 20px;
-  display: block;
-  width: 100%;
-  text-align: center;
-
-  /* Novo botão contador de cliques */
+/* Botão de contador de cliques */
 #contadorCliques {
   background-color: var(--rosa-medio);
   margin-top: 10px;
@@ -98,7 +97,7 @@ button:hover {
   font-size: 0.9rem;
 }
 
-/* Novo botão para limpar o contador */
+/* Botão de limpar contador */
 #limparContador {
   background-color: var(--rosa-escuro);
   color: white;
@@ -115,5 +114,20 @@ button:hover {
   background-color: #d44a97;
 }
 
+/* Botão de alternar tema */
+#alternarTema {
+  background-color: var(--rosa-escuro);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+#alternarTema:hover {
+  background-color: #d44a97;
 }
 
