@@ -1,4 +1,3 @@
-// Produtos padrão (caso o usuário nunca tenha adicionado nada ainda)
 const produtosPadrao = [
   { nome: "Pão", preco: 3.00 },
   { nome: "Leite", preco: 4.50 },
@@ -25,6 +24,33 @@ function obterCarrinho() {
 function salvarCarrinho(lista) {
   // LocalStorage 4: Salva a lista do carrinho no localStorage, convertendo o array para string JSON.
   localStorage.setItem("carrinho", JSON.stringify(lista));
+}
+
+// Recupera o contador por produto
+function obterContadorProdutos() {
+  // LocalStorage 6: Recupera o contador individual de produtos do localStorage, ou inicia como objeto vazio.
+  return JSON.parse(localStorage.getItem("contadorProdutos")) || {};
+}
+
+function salvarContadorProdutos(obj) {
+  // LocalStorage 7: Salva o contador individual de produtos no localStorage.
+  localStorage.setItem("contadorProdutos", JSON.stringify(obj));
+}
+
+// Variável global do contador
+let contadorProdutos = obterContadorProdutos();
+const botaoContador = document.getElementById("contadorCliques");
+
+// Atualiza o botão de contador
+function atualizarContador() {
+  const nomes = Object.keys(contadorProdutos);
+  if (nomes.length === 0) {
+    botaoContador.textContent = "🧮 Nenhum item adicionado ainda";
+    return;
+  }
+
+  const partes = nomes.map(nome => `${nome}: ${contadorProdutos[nome]}`);
+  botaoContador.textContent = `🧮 ${partes.join(" | ")}`;
 }
 
 // Atualiza a lista de produtos visíveis na "prateleira"
@@ -78,6 +104,15 @@ function adicionarAoCarrinho(nome, preco) {
   carrinho.push({ nome, preco });
   salvarCarrinho(carrinho);
   atualizarCarrinho();
+
+  // Atualiza o contador por produto
+  if (contadorProdutos[nome]) {
+    contadorProdutos[nome]++;
+  } else {
+    contadorProdutos[nome] = 1;
+  }
+  salvarContadorProdutos(contadorProdutos); // LocalStorage 7
+  atualizarContador();
 }
 
 // eventListener 2: É disparado quando o usuário clica no botão de adicionar produto manualmente
@@ -109,5 +144,15 @@ document.getElementById("limpar").addEventListener("click", () => {
 window.addEventListener("load", () => {
   atualizarProdutos();
   atualizarCarrinho();
+  atualizarContador(); // Atualiza contador por produto na tela
 });
+
+// eventListener 5: É disparado quando o usuário clica no botão de limpar contador de cliques
+document.getElementById("limparContador").addEventListener("click", () => {
+  // LocalStorage 8: Remove o contador do localStorage e reseta o objeto
+  localStorage.removeItem("contadorProdutos");
+  contadorProdutos = {};
+  atualizarContador();
+});
+
 

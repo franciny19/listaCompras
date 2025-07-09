@@ -78,3 +78,42 @@ button:hover {
   width: calc(50% - 10px);
 }
 
+/* Novo botão contador de cliques */
+#contadorCliques {
+  background-color: var(--rosa-medio);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: block;
+  width: 100%;
+  text-align: center;
+
+  /* Novo botão contador de cliques */
+#contadorCliques {
+  background-color: var(--rosa-medio);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Novo botão para limpar o contador */
+#limparContador {
+  background-color: var(--rosa-escuro);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#limparContador:hover {
+  background-color: #d44a97;
+}
+
+}
+
