@@ -176,4 +176,14 @@ document.getElementById("alternarTema").addEventListener("click", () => {
   }
 });
 
+const togglelilasMode = document.getElementById("addBtn2");
+// Salva no localStorage a preferência 
+togglelilasMode.addEventListener("click", () => { document.body.classList.toggle("lilas-mode"); 
+  if (document.body.classList.contains("lilas-mode")) 
+    { localStorage.setItem("tema", "lilas"); } 
+  else { if (document.body.classList.contains("dark-mode")) 
+    { localStorage.setItem("tema", "escuro"); 
+      toggleDarkMode.textContent = "☀️ Modo Claro"; } 
+      else { localStorage.setItem("tema", "claro"); 
+        toggleDarkMode.textContent = "🌙 Modo Escuro"; } } });
 
